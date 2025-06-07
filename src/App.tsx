@@ -2,6 +2,7 @@ import "./App.css";
 import { faker } from "@faker-js/faker";
 import RestartButton from "./components/RestartButton/RestartButton";
 import Results from "./components/Results/Results";
+import UserTypings from "./components/UserTypings/UserTypings";
 
 const words = faker.word.words(10);
 
@@ -9,7 +10,10 @@ function App() {
   return (
     <>
       <CountdownTimer timeLeft={30} />
-      <GeneratedWords words={words} />
+      <div className="relative max-w-xl mt-3 text-3xl leading-relaxed break-all">
+        <GeneratedWords words={words} />
+        <UserTypings className="absolute insert-0" userInput={words} />
+      </div>
       <RestartButton
         className={"mx-auto mt-10 text-slate-500"}
         onRestart={() => null}
@@ -25,7 +29,7 @@ function App() {
 }
 
 const GeneratedWords = ({ words }: { words: string }) => {
-  return <div className="text-4xl text-center text-slate-500">{words}</div>;
+  return <div className="text-slate-500">{words}</div>;
 };
 
 const CountdownTimer = ({ timeLeft }: { timeLeft: number }) => {

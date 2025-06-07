@@ -10,10 +10,14 @@ const UserTypings = ({
   return (
     <div className={className}>
       {typedCharacters.map((char, index) => {
-        return <span key={`${char}_${index}`}>{char}</span>;
+        return <Character key={`${char}_${index}`} char={char} />;
       })}
     </div>
   );
+};
+
+const Character = ({ char }: { char: string }) => {
+  return <span className="text-yellow-400">{char}</span>;
 };
 
 export default UserTypings;
